@@ -3,97 +3,120 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: isidibe- <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: ssi-moha <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/08 10:12:20 by isidibe-          #+#    #+#              #
-#    Updated: 2017/11/19 18:35:45 by isidibe-         ###   ########.fr        #
+#    Created: 2017/11/08 11:14:29 by ssi-moha          #+#    #+#              #
+#    Updated: 2018/02/26 16:25:24 by ssi-moha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: clean fclean
-
-SRC = ft_bzero.c\
-ft_memccpy.c\
-ft_memset.c\
-ft_memmove.c\
-ft_memchr.c\
-ft_memcmp.c\
-ft_strdup.c\
-ft_strcpy.c\
-ft_strncpy.c\
-ft_strcat.c\
-ft_strncat.c\
-ft_strchr.c\
-ft_strrchr.c\
-ft_strlcat.c\
-ft_strstr.c\
-ft_strnstr.c\
-ft_strcmp.c\
-ft_strncmp.c\
-ft_isalnum.c\
-ft_isascii.c\
-ft_isprint.c\
-ft_toupper.c\
-ft_tolower.c\
-ft_memcpy.c\
-ft_strlen.c\
-ft_isalpha.c\
-ft_isdigit.c\
-ft_atoi.c\
-ft_memalloc.c\
-ft_memdel.c\
-ft_strnew.c\
-ft_strdel.c\
-ft_strclr.c\
-ft_striter.c\
-ft_striteri.c\
-ft_strmap.c\
-ft_strmapi.c\
-ft_strequ.c\
-ft_strnequ.c\
-ft_itoa.c\
-ft_strsub.c\
-ft_strjoin.c\
-ft_strtrim.c\
-ft_strsplit.c\
-ft_putchar.c\
-ft_putstr.c\
-ft_putendl.c\
-ft_putnbr.c\
-ft_putchar_fd.c\
-ft_putstr_fd.c\
-ft_putendl_fd.c\
-ft_putnbr_fd.c\
-ft_lstnew.c\
-ft_lstdelone.c\
-ft_lstdel.c\
-ft_lstadd.c\
-ft_lstiter.c\
-ft_lstmap.c\
-ft_iscntrl.c\
-ft_islower.c\
-ft_isupper.c\
-ft_strcapitalize.c\
-ft_strndup.c\
-ft_strnlen.c\
-ft_sqrt.c\
-
-OBJ = $(SRC:.c=.o)
-
 NAME = libft.a
+
+CC = gcc
+
+INCLUDES = includes
+
+SRCDIR = srcs
+
+OBJDIR = objects
+
+H = libft.h
+
+CFLAGS = -Wall -Wextra -Werror
+
+SRC = $(SRCDIR)/ft_memset.c\
+	  $(SRCDIR)/ft_bzero.c\
+	  $(SRCDIR)/ft_memcpy.c\
+	  $(SRCDIR)/ft_memccpy.c\
+	  $(SRCDIR)/ft_memmove.c\
+	  $(SRCDIR)/ft_memchr.c\
+	  $(SRCDIR)/ft_memcmp.c\
+	  $(SRCDIR)/ft_strlen.c\
+	  $(SRCDIR)/ft_strclen.c\
+	  $(SRCDIR)/ft_strcdup.c\
+	  $(SRCDIR)/ft_strdup.c\
+	  $(SRCDIR)/ft_strndup.c\
+	  $(SRCDIR)/ft_strcpy.c\
+	  $(SRCDIR)/ft_strncpy.c\
+	  $(SRCDIR)/ft_strcat.c\
+	  $(SRCDIR)/ft_strncat.c\
+	  $(SRCDIR)/ft_strlcat.c\
+	  $(SRCDIR)/ft_strchr.c\
+	  $(SRCDIR)/ft_strrchr.c\
+	  $(SRCDIR)/ft_strstr.c\
+	  $(SRCDIR)/ft_strnstr.c\
+	  $(SRCDIR)/ft_strcmp.c\
+	  $(SRCDIR)/ft_strncmp.c\
+	  $(SRCDIR)/ft_atoi.c\
+	  $(SRCDIR)/ft_isalpha.c\
+	  $(SRCDIR)/ft_isdigit.c\
+	  $(SRCDIR)/ft_isalnum.c\
+	  $(SRCDIR)/ft_isascii.c\
+	  $(SRCDIR)/ft_isprint.c\
+	  $(SRCDIR)/ft_tolower.c\
+	  $(SRCDIR)/ft_toupper.c\
+	  $(SRCDIR)/ft_isupper.c\
+	  $(SRCDIR)/ft_islower.c\
+	  $(SRCDIR)/ft_memalloc.c\
+	  $(SRCDIR)/ft_memdel.c\
+	  $(SRCDIR)/ft_strnew.c\
+	  $(SRCDIR)/ft_strdel.c\
+	  $(SRCDIR)/ft_strclr.c\
+	  $(SRCDIR)/ft_striter.c\
+	  $(SRCDIR)/ft_striteri.c\
+	  $(SRCDIR)/ft_strmap.c\
+	  $(SRCDIR)/ft_strmapi.c\
+	  $(SRCDIR)/ft_strequ.c\
+	  $(SRCDIR)/ft_strnequ.c\
+	  $(SRCDIR)/ft_strsub.c\
+	  $(SRCDIR)/ft_strjoin.c\
+	  $(SRCDIR)/ft_strnjoin.c\
+	  $(SRCDIR)/ft_strtrim.c\
+	  $(SRCDIR)/ft_strsplit.c\
+	  $(SRCDIR)/ft_itoa.c\
+	  $(SRCDIR)/ft_putchar.c\
+	  $(SRCDIR)/ft_putstr.c\
+	  $(SRCDIR)/ft_putendl.c\
+	  $(SRCDIR)/ft_putnbr.c\
+	  $(SRCDIR)/ft_putchar_fd.c\
+	  $(SRCDIR)/ft_putstr_fd.c\
+	  $(SRCDIR)/ft_putendl_fd.c\
+	  $(SRCDIR)/ft_putnbr_fd.c\
+	  $(SRCDIR)/ft_lstnew.c\
+	  $(SRCDIR)/ft_lstdelone.c\
+	  $(SRCDIR)/ft_lstdel.c\
+	  $(SRCDIR)/ft_lstadd.c\
+	  $(SRCDIR)/ft_lstiter.c\
+	  $(SRCDIR)/ft_lstmap.c\
+	  $(SRCDIR)/ft_list_push_back.c\
+	  $(SRCDIR)/ft_sqrt.c\
+	  $(SRCDIR)/ft_recursive_factorial.c\
+	  $(SRCDIR)/ft_swap.c\
+	  $(SRCDIR)/ft_strrev.c\
+	  $(SRCDIR)/ft_itoa_base.c\
+	  $(SRCDIR)/ft_struppercase.c
+
+OBJ= $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar rcs $(NAME) $^
-
-%.o: %.c
-	gcc -o $@ -c $< -Wall -Wextra -Werror
+$(NAME): build $(OBJ)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 
 clean:
-	rm -rf $(OBJ)
+	rm -f $(OBJ)
+	rm -rf $(OBJDIR)
 
 fclean: clean
-	rm -rf libft.a
+	rm -rf $(NAME)
 
 re: fclean all
+
+build:
+	mkdir -p objects
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	gcc -c -o $@ $< $(CFLAGS) -I$(INCLUDES)
+	
+
